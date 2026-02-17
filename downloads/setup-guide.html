@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FreePeriod Pro Toolkit &mdash; Setup Guide</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #1a1a2e;
+    background: #fff;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.7;
+  }
+  h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  h1 span { color: #0d9488; }
+  .subtitle { color: #666; font-size: 0.95rem; margin-bottom: 2rem; }
+  h2 { font-size: 1.2rem; margin: 2rem 0 0.8rem; padding-bottom: 0.3rem; border-bottom: 2px solid #0d9488; }
+  h3 { font-size: 1rem; margin: 1.2rem 0 0.4rem; }
+  p { margin-bottom: 0.8rem; font-size: 0.95rem; }
+  ol, ul { margin: 0.5rem 0 1rem 1.5rem; }
+  li { margin-bottom: 0.5rem; font-size: 0.95rem; }
+  code {
+    background: #f0f0f0;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+  }
+  .step-box {
+    background: #f8f8f5;
+    border: 1px solid #e0e0d8;
+    border-left: 4px solid #0d9488;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .warning {
+    background: #fff8e1;
+    border-left-color: #f59e0b;
+  }
+  .tip {
+    background: #f0fdf4;
+    border-left-color: #22c55e;
+  }
+  a { color: #0d9488; }
+  @media print {
+    body { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>FreePeriod <span>Pro Toolkit</span></h1>
+<p class="subtitle">Setup Guide &mdash; You'll be up and running in about 15 minutes.</p>
+
+<h2>What You Got</h2>
+<p>Your Pro Toolkit includes:</p>
+<ul>
+  <li><strong>3 MCP Bundles</strong> (.mcpb files) &mdash; Canvas LMS (15 tools), Google Workspace (13 tools), Microsoft 365 (14 tools)</li>
+  <li><strong>System Prompt</strong> &mdash; Custom instructions with 9 workflow commands</li>
+  <li><strong>This Setup Guide</strong></li>
+</ul>
+
+<h2>Prerequisites</h2>
+<ol>
+  <li><strong>Claude Pro subscription</strong> ($20/month from Anthropic) &mdash; <a href="https://claude.ai/settings/billing">claude.ai/settings/billing</a></li>
+  <li><strong>Claude Desktop app</strong> (free) &mdash; <a href="https://claude.ai/download">claude.ai/download</a></li>
+</ol>
+
+<div class="step-box warning">
+  <strong>Important:</strong> The .mcpb bundles require the Claude Desktop app, not the web version. Make sure you have Claude Desktop installed before proceeding.
+</div>
+
+<h2>Step 1: Install the MCP Bundles</h2>
+<p>Install the bundles for the platforms your school uses. You don't need all three.</p>
+
+<h3>Canvas LMS</h3>
+<ol>
+  <li>Double-click <code>freeperiod-canvas.mcpb</code></li>
+  <li>Claude Desktop will open and ask you to confirm the installation</li>
+  <li>Click <strong>Install</strong></li>
+  <li>When prompted, enter your Canvas API token (get one from your Canvas Settings &gt; Approved Integrations &gt; New Access Token)</li>
+  <li>Enter your Canvas URL (e.g., <code>https://yourschool.instructure.com</code>)</li>
+</ol>
+
+<h3>Google Workspace</h3>
+<ol>
+  <li>Double-click <code>freeperiod-google.mcpb</code></li>
+  <li>Click <strong>Install</strong> in Claude Desktop</li>
+  <li>A browser window will open for Google OAuth &mdash; sign in with your school Google account</li>
+  <li>Grant the requested permissions (Classroom, Gmail, Calendar, Drive, Docs, Sheets, Slides, Forms)</li>
+  <li>The browser will show "Authentication successful" &mdash; you can close it</li>
+</ol>
+
+<h3>Microsoft 365</h3>
+<ol>
+  <li>Double-click <code>freeperiod-microsoft.mcpb</code></li>
+  <li>Click <strong>Install</strong> in Claude Desktop</li>
+  <li>You'll see a device code &mdash; go to <a href="https://microsoft.com/devicelogin">microsoft.com/devicelogin</a> and enter it</li>
+  <li>Sign in with your school Microsoft account</li>
+  <li>Grant the requested permissions</li>
+</ol>
+
+<div class="step-box tip">
+  <strong>Tip:</strong> You can install just the bundle(s) for your school's platform. If your school uses Canvas and Google, install those two. You can always add more later.
+</div>
+
+<h2>Step 2: Set Up the System Prompt</h2>
+<ol>
+  <li>Open Claude Desktop</li>
+  <li>Click <strong>Projects</strong> in the sidebar</li>
+  <li>Click <strong>Create project</strong></li>
+  <li>Name it <strong>"FreePeriod"</strong> (or whatever you like)</li>
+  <li>Click <strong>Set custom instructions</strong></li>
+  <li>Open the <code>system-prompt.txt</code> file from your download</li>
+  <li>Copy the entire contents and paste into the Custom Instructions field</li>
+  <li>Click <strong>Save</strong></li>
+</ol>
+
+<h2>Step 3: Try It Out</h2>
+<p>Start a new conversation inside your FreePeriod project and try these commands:</p>
+
+<div class="step-box">
+  <p><code>/plan photosynthesis 7th grade science</code> &mdash; Generate a lesson plan</p>
+  <p><code>/rubric persuasive essay 10th grade</code> &mdash; Create a rubric</p>
+  <p><code>/quiz American Revolution 8th grade, 10 questions</code> &mdash; Build a quiz</p>
+  <p><code>/grade</code> &mdash; Pull assignments from your LMS and help grade them</p>
+  <p><code>/parent-email Jordan missing work</code> &mdash; Draft a parent email</p>
+  <p><code>/sub-plans</code> &mdash; Generate sub plans from your current unit</p>
+</div>
+
+<h2>All 9 Commands</h2>
+<ul>
+  <li><code>/plan</code> &mdash; Standards-aligned lesson plans</li>
+  <li><code>/grade</code> &mdash; Rubric-based grading assistance</li>
+  <li><code>/parent-email</code> &mdash; Professional parent communication</li>
+  <li><code>/quiz</code> &mdash; Assessments with answer keys</li>
+  <li><code>/sub-plans</code> &mdash; Emergency substitute teacher plans</li>
+  <li><code>/differentiate</code> &mdash; Three-tier lesson adaptation</li>
+  <li><code>/rubric</code> &mdash; Assessment rubric generator</li>
+  <li><code>/report</code> &mdash; Student/class performance summaries</li>
+  <li><code>/standards</code> &mdash; Standards lookup and alignment</li>
+</ul>
+
+<h2>Troubleshooting</h2>
+<h3>MCP bundle won't install</h3>
+<p>Make sure you have the latest version of Claude Desktop. The .mcpb format requires a recent update.</p>
+
+<h3>Canvas says "unauthorized"</h3>
+<p>Your API token may have expired. Generate a new one in Canvas: Settings &gt; Approved Integrations &gt; New Access Token.</p>
+
+<h3>Google auth fails</h3>
+<p>Make sure you're signing in with the same Google account you use for Google Classroom. If your school uses Google Workspace for Education, you may need your admin to allow third-party apps.</p>
+
+<h3>Need help?</h3>
+<p>Email us at <a href="mailto:info@ai4teachers.co">info@ai4teachers.co</a> &mdash; we typically respond within 24 hours.</p>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0e0d8;">
+<p style="text-align: center; color: #888; font-size: 0.85rem;">&copy; 2026 Free Period by AI4Teachers.co</p>
+
+</body>
+</html>

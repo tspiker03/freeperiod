@@ -41,7 +41,7 @@ module.exports = async (req, res) => {
         canvas: '/downloads/freeperiod-canvas.mcpb',
         google: '/downloads/freeperiod-google.mcpb',
         microsoft: '/downloads/freeperiod-microsoft.mcpb',
-        setup_guide: '/downloads/setup-guide.pdf',
+        setup_guide: '/downloads/setup-guide.html',
         system_prompt: '/downloads/system-prompt.txt',
       },
     });
