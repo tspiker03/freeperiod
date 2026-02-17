@@ -1293,7 +1293,7 @@
           <li><span class="icon">&#x2713;</span> 2-minute setup &mdash; just paste the system prompt</li>
           <li><span class="icon">&#x2713;</span> Standards-aligned outputs, ready to use</li>
         </ul>
-        <a href="#cta" class="plan-btn outline">Start Free</a>
+        <a href="/free-tools" class="plan-btn outline">Start Free</a>
       </div>
       <div class="price-card featured">
         <div class="plan-name">Pro</div>
@@ -1446,50 +1446,29 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 
-// Form handler &mdash; submits to Google Form
+// Form handler - submits email and redirects to free tools page
 function handleSubmit(e, form) {
   e.preventDefault();
   const input = form.querySelector('input');
   const button = form.querySelector('button');
-  const originalText = button.dataset.original;
   const email = input.value.trim();
   if (!email) return;
 
-  button.textContent = 'Sending...';
+  button.textContent = 'Getting your tools...';
   button.disabled = true;
 
-  const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScgwMboGki238NhxCjm2Xolbl_6CM5I4qo8jd7C8x4FoNdVbw/formResponse';
-  const formData = new URLSearchParams();
-  formData.append('entry.2116253119', email);
-
-  fetch(formUrl, {
+  // Submit to API (logs + submits to Google Forms for tracking)
+  fetch('/api/send-free-tools', {
     method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: formData.toString()
-  }).then(() => {
-    input.value = '';
-    button.textContent = 'You\'re in! Check your inbox';
-    button.style.background = '#0d9488';
-    setTimeout(() => {
-      button.textContent = originalText;
-      button.disabled = false;
-      button.style.background = '';
-    }, 3000);
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  }).then(res => res.json()).then(data => {
+    window.location.href = '/free-tools';
   }).catch(() => {
-    input.value = '';
-    button.textContent = 'You\'re in! Check your inbox';
-    button.style.background = '#0d9488';
-    setTimeout(() => {
-      button.textContent = originalText;
-      button.disabled = false;
-      button.style.background = '';
-    }, 3000);
+    // Redirect anyway even if API fails - tools are free
+    window.location.href = '/free-tools';
   });
 }
-document.querySelectorAll('.email-form button').forEach(btn => {
-  btn.dataset.original = btn.textContent;
-});
 
 // Stripe Checkout — Pro Toolkit purchase
 function buyPro(e) {

@@ -8,9 +8,18 @@
     },
     "api/verify-purchase.js": {
       "maxDuration": 10
+    },
+    "api/send-free-tools.js": {
+      "maxDuration": 10
     }
   },
   "rewrites": [
-    { "source": "/success", "destination": "/success.html" }
+    { "source": "/success", "destination": "/success.html" },
+    { "source": "/free-tools", "destination": "/free-tools.html" },
+    { "source": "/course", "destination": "/course/welcome.html" },
+    { "source": "/course/lesson-1", "destination": "/course/lesson-1.html" },
+    { "source": "/course/lesson-2", "destination": "/course/lesson-2.html" },
+    { "source": "/course/lesson-3", "destination": "/course/lesson-3.html" },
+    { "source": "/course/lesson-4", "destination": "/course/lesson-4.html" }
   ]
 }

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Free AI Teaching Tools &mdash; Free Period</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --ink: #1a1a2e;
+    --ink-light: #4a4a5e;
+    --ink-muted: #8888a0;
+    --teal: #0d9488;
+    --teal-dark: #0f766e;
+    --teal-light: #99f6e4;
+    --teal-bg: rgba(13,148,136,0.06);
+    --red: #dc2626;
+    --pencil-line: rgba(26,26,46,0.08);
+    --font-display: 'Bricolage Grotesque', sans-serif;
+    --font-serif: 'Instrument Serif', serif;
+    --font-hand: 'Kalam', cursive;
+    --font-body: 'Bricolage Grotesque', sans-serif;
+    --grid-color: rgba(59, 130, 246, 0.04);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--bg);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Nav */
+  nav {
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(247,245,240,0.88);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--pencil-line);
+    position: relative;
+    z-index: 10;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .logo-bell {
+    width: 38px; height: 38px;
+    background: var(--teal);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    transform: rotate(-6deg);
+    box-shadow: 0 3px 10px rgba(13,148,136,0.25);
+    color: white;
+  }
+  .logo-text {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.3rem;
+  }
+
+  .page-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Hero */
+  .hero-section {
+    text-align: center;
+    padding: 3rem 0 2rem;
+  }
+  .hero-section .success-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(13,148,136,0.1);
+    color: var(--teal-dark);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-section h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+  .hero-section h1 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--teal);
+  }
+  .hero-section p {
+    color: var(--ink-light);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* Steps */
+  .steps-section {
+    margin: 2.5rem 0;
+  }
+  .steps-section h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .step-card {
+    background: white;
+    border: 1.5px solid var(--pencil-line);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: all 0.3s;
+  }
+  .step-card:hover {
+    border-color: rgba(13,148,136,0.3);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  }
+  .step-num {
+    width: 36px; height: 36px;
+    background: var(--teal);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+  .step-content h3 {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  .step-content p {
+    color: var(--ink-light);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .step-content a {
+    color: var(--teal);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .step-content a:hover {
+    text-decoration: underline;
+  }
+
+  /* Prompt box */
+  .prompt-section {
+    margin: 2.5rem 0;
+  }
+  .prompt-section h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .prompt-section .subtitle {
+    color: var(--ink-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .prompt-box {
+    position: relative;
+    background: #1a1a2e;
+    border-radius: 16px;
+    padding: 1.5rem;
+    overflow: hidden;
+  }
+  .prompt-box pre {
+    color: #e2e8f0;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .prompt-box pre::-webkit-scrollbar {
+    width: 6px;
+  }
+  .prompt-box pre::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px;
+  }
+  .copy-btn {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    background: var(--teal);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 2;
+  }
+  .copy-btn:hover {
+    background: var(--teal-dark);
+  }
+  .copy-btn.copied {
+    background: #16a34a;
+  }
+
+  /* Command cards */
+  .commands-section {
+    margin: 2.5rem 0;
+  }
+  .commands-section h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .cmd-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .cmd-card {
+    background: white;
+    border: 1.5px solid var(--pencil-line);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+  .cmd-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+  .cmd-card .cmd-name {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+  }
+  .cmd-card h3 {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+  .cmd-card p {
+    color: var(--ink-light);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .cmd-card .example {
+    margin-top: 0.8rem;
+    padding: 0.6rem 0.8rem;
+    background: var(--teal-bg);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  /* Upsell */
+  .upsell-section {
+    margin: 2.5rem 0;
+    background: white;
+    border: 2px solid rgba(13,148,136,0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+  }
+  .upsell-section h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  .upsell-section h2 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--teal);
+  }
+  .upsell-section p {
+    color: var(--ink-light);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .upsell-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .upsell-features span {
+    background: var(--teal-bg);
+    color: var(--teal-dark);
+    padding: 0.35rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .upsell-btn {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .upsell-btn:hover {
+    background: var(--teal-dark);
+    transform: translateY(-1px);
+  }
+  .upsell-note {
+    font-family: var(--font-hand);
+    color: var(--red);
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+    transform: rotate(-1deg);
+    display: inline-block;
+  }
+
+  /* Free class CTA */
+  .class-cta {
+    margin: 2.5rem 0;
+    background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    color: white;
+    text-align: center;
+  }
+  .class-cta h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  .class-cta p {
+    opacity: 0.9;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .class-cta a {
+    display: inline-block;
+    background: white;
+    color: var(--teal-dark);
+    padding: 0.7rem 1.8rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .class-cta a:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+    position: relative;
+    z-index: 1;
+  }
+  footer a {
+    color: var(--teal);
+    text-decoration: none;
+  }
+
+  @media (max-width: 640px) {
+    .page-wrap { padding: 1.5rem; }
+    .hero-section h1 { font-size: 1.7rem; }
+    .cmd-grid { grid-template-columns: 1fr; }
+    .step-card { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="logo-bell">&#x1F514;</div>
+    <span class="logo-text">Free Period</span>
+  </a>
+  <a href="/" style="color: var(--teal); font-weight: 600; text-decoration: none; font-size: 0.9rem;">&larr; Back to home</a>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- Hero -->
+  <div class="hero-section">
+    <div class="success-badge">&#x2713; You're in!</div>
+    <h1>Your Free <em>AI Teaching Tools</em></h1>
+    <p>Here are your 4 free AI commands. Follow the setup below and you'll be planning lessons with AI in under 2 minutes.</p>
+  </div>
+
+  <!-- Setup Steps -->
+  <div class="steps-section">
+    <h2>&#x1F680; Setup (under 2 minutes)</h2>
+
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Open Claude</h3>
+        <p>Go to <a href="https://claude.ai" target="_blank">claude.ai</a> and sign in (or create a free account). You can also use the <a href="https://claude.ai/download" target="_blank">Claude Desktop app</a>.</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Create a Project</h3>
+        <p>Click <strong>"Projects"</strong> in the sidebar, then <strong>"Create project."</strong> Name it something like <strong>"My Teaching Assistant"</strong>.</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Paste the System Prompt</h3>
+        <p>Click <strong>"Set custom instructions"</strong> in your project, then paste the entire prompt below. Click <strong>Save</strong>.</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Start a chat and try it!</h3>
+        <p>Open a new chat inside your project and type: <strong>/plan photosynthesis 7th grade</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- System Prompt -->
+  <div class="prompt-section">
+    <h2>&#x1F4CB; Your System Prompt</h2>
+    <p class="subtitle">Copy everything in the dark box below and paste it into your Claude project's custom instructions.</p>
+    <div class="prompt-box">
+      <button class="copy-btn" onclick="copyPrompt()">Copy to clipboard</button>
+      <pre id="system-prompt">You are an expert teaching assistant, instructional coach, and classroom productivity partner. You have deep knowledge of pedagogy, curriculum design, assessment strategies, and educational best practices. You support teachers across all grade levels (K-12 and higher education) and subject areas.
+
+## Your Role
+
+You are NOT a replacement teacher. You are a highly capable assistant that helps teachers work more efficiently so they can focus on what matters most: their students. Think of yourself as a combination of an experienced department head, instructional coach, and administrative assistant.
+
+## Workflow Commands
+
+When a teacher uses one of these commands, follow the specified workflow.
+
+### /plan [topic]
+Generate a standards-aligned lesson plan.
+1. Ask for grade level and subject if not obvious from context
+2. Include: learning objective, standards alignment, warm-up/hook, direct instruction, guided practice, independent practice, assessment/exit ticket, differentiation notes (below-level, on-level, above-level)
+3. Format as a clean, printable document
+
+### /rubric [assignment description]
+Generate an assessment rubric.
+1. Create a 4-level rubric (Exceeding, Meeting, Approaching, Beginning) unless another format is requested
+2. Include 3-5 criteria based on the learning objectives
+3. Write specific, observable descriptors for each cell &mdash; not vague language
+4. Include point values
+
+### /differentiate [lesson or activity]
+Adapt content for diverse learners.
+1. Create three tiers: approaching (scaffolded support), meeting (grade-level), exceeding (extension/enrichment)
+2. For each tier, modify: complexity of text, scaffolding level, output expectations, and grouping suggestions
+3. Note relevant accommodations for common IEP/504 needs (extended time, reduced workload, preferential seating, text-to-speech)
+4. Suggest ELL modifications if relevant (visual supports, sentence frames, vocabulary pre-teaching)
+
+### /quiz [topic or standard]
+Create an assessment.
+1. Ask for grade level, number of questions, and format preferences if not specified
+2. Include a mix of question types: multiple choice, short answer, and at least one higher-order thinking question
+3. Align each question to a specific standard or learning objective
+4. Create an answer key with point values and acceptable answer variations
+
+## Pedagogical Framework
+
+When creating instructional content, apply these principles:
+
+Bloom's Taxonomy: Ensure activities span cognitive levels. Push toward analysis, evaluation, and creation when appropriate for the grade level.
+
+Universal Design for Learning (UDL): Multiple means of engagement, representation, and action/expression.
+
+Backwards Design: Start with the desired outcome, then determine assessment, then plan instruction.
+
+Formative Assessment: Build in frequent checks for understanding.
+
+Culturally Responsive Teaching: Use diverse examples, texts, and perspectives.
+
+## Response Style
+
+- Be direct and practical. Teachers are busy.
+- Use formatting that's easy to scan: headers, short paragraphs, tables when comparing things.
+- When creating documents or materials, make them ready to use &mdash; not outlines that need more work.
+- If a teacher asks for something that could be done better a different way, suggest the alternative but do what they asked first.</pre>
+    </div>
+  </div>
+
+  <!-- What You Can Do -->
+  <div class="commands-section">
+    <h2>&#x2728; Your 4 Free Commands</h2>
+    <div class="cmd-grid">
+      <div class="cmd-card">
+        <div class="cmd-name">/plan</div>
+        <h3>Lesson Planner</h3>
+        <p>Generate standards-aligned lesson plans with objectives, activities, differentiation, and exit tickets.</p>
+        <div class="example">/plan photosynthesis 7th grade</div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-name">/rubric</div>
+        <h3>Rubric Generator</h3>
+        <p>Create 4-level rubrics with specific, observable criteria tied to learning objectives.</p>
+        <div class="example">/rubric persuasive essay 10th grade</div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-name">/differentiate</div>
+        <h3>Differentiation Engine</h3>
+        <p>Adapt any lesson for three tiers with IEP/504 accommodations and ELL modifications.</p>
+        <div class="example">/differentiate this fraction lesson</div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-name">/quiz</div>
+        <h3>Quiz Builder</h3>
+        <p>Build assessments with mixed question types, answer keys, and standards alignment.</p>
+        <div class="example">/quiz American Revolution 8th grade</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Free Class CTA -->
+  <div class="class-cta">
+    <h2>&#x1F393; Want a guided walkthrough?</h2>
+    <p>Join our free "Intro to AI for Teachers" course on Google Classroom. We'll walk you through setting up and mastering each command, step by step.</p>
+    <a href="https://classroom.google.com/c/ODI1NTQ2NjYwNDYz" target="_blank">Join the Free Course</a>
+  </div>
+
+  <!-- Pro Upsell -->
+  <div class="upsell-section">
+    <h2>Ready for <em>more?</em></h2>
+    <p>Love the free tools? The Pro Toolkit connects Claude directly to your LMS, email, and files &mdash; so it can grade, email parents, post announcements, and create documents for you.</p>
+    <div class="upsell-features">
+      <span>&#x1F3EB; Canvas LMS (15 tools)</span>
+      <span>&#x1F4E7; Google Workspace (13 tools)</span>
+      <span>&#x1F4BB; Microsoft 365 (14 tools)</span>
+      <span>&#x1F4C4; Word, PowerPoint, Excel, PDF</span>
+      <span>&#x1F4DD; 13 AI skills</span>
+    </div>
+    <button class="upsell-btn" onclick="buyPro()">Get the Pro Toolkit &mdash; $59</button>
+    <div class="upsell-note">&#x261D;&#xFE0F; One-time purchase. Not a subscription.</div>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Free Period by <a href="https://ai4teachers.co">AI4Teachers.co</a></p>
+</footer>
+
+<script>
+function copyPrompt() {
+  const promptText = document.getElementById('system-prompt').textContent;
+  navigator.clipboard.writeText(promptText).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy to clipboard';
+      btn.classList.remove('copied');
+    }, 2500);
+  });
+}
+
+function buyPro() {
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = '/api/checkout';
+  document.body.appendChild(form);
+  form.submit();
+}
+</script>
+
+</body>
+</html>
