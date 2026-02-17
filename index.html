@@ -1307,7 +1307,7 @@
           <li><span class="icon">&#x2713;</span> File exports: Word, PowerPoint, Excel, PDF</li>
           <li><span class="icon">&#x2713;</span> Setup guides + 1 year of updates</li>
         </ul>
-        <a href="#cta" class="plan-btn filled">Get the Pro Toolkit &mdash; $59</a>
+        <a href="#" class="plan-btn filled" onclick="buyPro(event)">Get the Pro Toolkit &mdash; $59</a>
       </div>
     </div>
     <p class="pricing-hand-note reveal">&#x1F4A1; $59 once. Not per month. Not per year. Once. &#x2615;</p>
@@ -1490,6 +1490,16 @@ function handleSubmit(e, form) {
 document.querySelectorAll('.email-form button').forEach(btn => {
   btn.dataset.original = btn.textContent;
 });
+
+// Stripe Checkout — Pro Toolkit purchase
+function buyPro(e) {
+  e.preventDefault();
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = '/api/checkout';
+  document.body.appendChild(form);
+  form.submit();
+}
 </script>
 
 </body>
