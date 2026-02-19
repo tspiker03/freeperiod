@@ -46,10 +46,6 @@ function buildWelcomeEmail() {
         You just unlocked 4 AI-powered teaching commands that work inside Claude. Here's how to start using them in about 2 minutes.
       </p>
 
-      <p style="color:#8888a0;font-size:13px;line-height:1.5;margin:0 0 20px;padding:10px 16px;background:rgba(13,148,136,0.04);border-radius:8px;border-left:3px solid #0d9488;">
-        <strong style="color:#4a4a5e;">Don't see future emails from us?</strong> Check your <strong>Promotions</strong> or <strong>Spam</strong> folder and move this email to your Primary inbox so you never miss an update.
-      </p>
-
       <!-- CTA Button -->
       <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
