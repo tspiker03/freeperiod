@@ -43,7 +43,7 @@ function buildWelcomeEmail() {
   <tr>
     <td style="padding:36px 40px 24px;">
       <p style="color:#1a1a2e;font-size:16px;line-height:1.7;margin:0 0 20px;">
-        You just unlocked 4 AI-powered teaching commands that work inside Claude. Here's how to start using them in about 2 minutes.
+        You just unlocked 5 AI-powered teaching commands that work inside Claude &mdash; including a bonus Sub Plan Generator. Here's how to start using them in about 2 minutes.
       </p>
 
       <!-- CTA Button -->
@@ -67,7 +67,7 @@ function buildWelcomeEmail() {
 
       <!-- 4 Commands -->
       <h2 style="color:#1a1a2e;font-size:18px;font-weight:700;margin:0 0 16px;">
-        Your 4 Free Commands
+        Your 5 Free Commands
       </h2>
 
       <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;">
@@ -104,6 +104,16 @@ function buildWelcomeEmail() {
             <span style="color:#4a4a5e;font-size:14px;"> &mdash; Create a quick assessment</span>
             <br>
             <span style="color:#8888a0;font-size:13px;font-style:italic;">Try: /quiz American Revolution 8th grade</span>
+          </td>
+        </tr>
+        <tr><td style="height:8px;"></td></tr>
+        <tr>
+          <td style="padding:12px 16px;background:rgba(13,148,136,0.12);border-radius:10px;border:1px solid rgba(13,148,136,0.2);">
+            <span style="color:#0d9488;font-weight:700;font-size:15px;">/sub-plan</span>
+            <span style="background:#0d9488;color:#ffffff;font-size:11px;font-weight:700;padding:2px 6px;border-radius:50px;margin-left:6px;">BONUS</span>
+            <span style="color:#4a4a5e;font-size:14px;"> &mdash; Generate substitute teacher plans</span>
+            <br>
+            <span style="color:#8888a0;font-size:13px;font-style:italic;">Try: /sub-plan I'll be out tomorrow</span>
           </td>
         </tr>
       </table>
