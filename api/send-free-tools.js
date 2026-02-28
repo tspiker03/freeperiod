@@ -116,7 +116,7 @@ function buildWelcomeEmail() {
         &#x1F393; Want to go deeper?
       </h2>
       <p style="color:#4a4a5e;font-size:14px;line-height:1.6;margin:0 0 16px;">
-        Our free course &mdash; <strong>Intro to AI for Teachers</strong> &mdash; walks you through 5 modules: the RCTFC prompting framework, how MCP connects AI to your tools, building reusable skills, and putting it all together into your own AI teaching assistant.
+        Our free course &mdash; <strong>Intro to AI for Teachers</strong> &mdash; walks you through 5 modules: the RCTFC prompting framework, connecting AI to your teaching tools, building a personalized AI assistant, and planning, assessing, and communicating with AI.
       </p>
       <a href="https://classroom.google.com/c/ODI1NTQ2NjYwNDYz?cjc=fp4iwvy"
          style="color:#0d9488;font-weight:700;font-size:14px;text-decoration:underline;">
